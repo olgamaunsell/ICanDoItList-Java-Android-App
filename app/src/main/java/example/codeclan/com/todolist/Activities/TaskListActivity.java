@@ -1,7 +1,9 @@
-package example.codeclan.com.todolist;
+package example.codeclan.com.todolist.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import example.codeclan.com.todolist.R;
 
 public class TaskListActivity extends AppCompatActivity {
 
