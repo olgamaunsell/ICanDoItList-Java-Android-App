@@ -1,12 +1,14 @@
 package example.codeclan.com.todolist.Models;
 
+import java.io.Serializable;
+
 import example.codeclan.com.todolist.Enums.RagStatus;
 
 /**
  * Created by admin on 27/01/2018.
  */
 
-public class Task {
+public class Task implements Serializable {
 
     private String name;
     private String description;

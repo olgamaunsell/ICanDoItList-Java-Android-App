@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ToDoList</string>
+    <string name="app_name">To Do List</string>
+    <string name="preference_file_key">SAVED TASKS</string>
+    <string name="priority_entry">Tick if priority task</string>
 </resources>
