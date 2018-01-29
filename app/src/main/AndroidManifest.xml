@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".Activities.Maintain_Task_Activity"-->
-                  <!--android:parentActivityName=".Activities.MainActivity"></activity>-->
+        <activity android:name=".Activities.SavedListActivity"
+            android:parentActivityName=".Activities.TaskListActivity"></activity>
     </application>
 
 </manifest>

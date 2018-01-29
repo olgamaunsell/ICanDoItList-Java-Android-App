@@ -3,7 +3,6 @@ package example.codeclan.com.todolist.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,7 +19,7 @@ import example.codeclan.com.todolist.R;
 
 public class SavedListActivity extends AppCompatActivity {
 
-    TextView savedTask;
+    TextView savedTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,8 @@ public class SavedListActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
 //        JSON STRING
 
-        String savedTasks = sharedPref.getString("AllTasks", new ArrayList<Movie>().toString());
-        Log.d("All tasks", savedTasks);
+        String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
+        Log.d("All tasks", currentlySavedTasks);
 
 //        gson setup
 
@@ -39,26 +38,28 @@ public class SavedListActivity extends AppCompatActivity {
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
 
 //        USING the JSON string to put into GSON ARRAYLIST
-        ArrayList<Task> AllTasks = gson.fromJson(savedTasks, taskArrayListToken.getType());
+        ArrayList<Task> tasksToSave = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
 
         Intent intent = getIntent();
         Task selectedTask = (Task) intent.getSerializableExtra("task");
 
-        AllTasks.add(selectedTask);
+        tasksToSave.add(selectedTask);
 
 // STYLING TO OUTPUT MY FAVOURITES TO THE SCREEN
         String taskString = "";
-        for(Task task : AllTasks){
+        for(Task task : tasksToSave){
             taskString += task.getName() + "-" + task.getDescription() + "\n";
         }
 
-        savedTask = findViewById(R.id.saved);
-        savedTask.setText(taskString);
+        savedTasks = findViewById(R.id.saved);
+        savedTasks.setText(taskString);
 
 //        LINES BELOW ARE RESPONSIBLE FOR SAVING THE DATA TO THE JSON STRING
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("allTasks", gson.toJson(AllTasks));
+
+
+        editor.putString("AllTasks", gson.toJson(tasksToSave));
         editor.apply();
 
         Toast.makeText(this,selectedTask.getName() + " is added !",  Toast.LENGTH_LONG).show();

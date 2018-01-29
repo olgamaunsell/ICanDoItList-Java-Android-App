@@ -46,7 +46,7 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     public void onComplete(View listItem){
-//        complete method to update "complete" boolean
+// todo    -   complete method to update "complete" boolean
 
         Task selectedTask = (Task) listItem.getTag();
 
