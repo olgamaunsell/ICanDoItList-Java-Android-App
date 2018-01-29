@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Activities.SavedListActivity"
             android:parentActivityName=".Activities.TaskListActivity"></activity>
+        <activity android:name=".Activities.AddTaskActivity"
+            android:parentActivityName=".Activities.TaskListActivity"></activity>
     </application>
 
 </manifest>
