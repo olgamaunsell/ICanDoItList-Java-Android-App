@@ -29,6 +29,13 @@ public class TaskListActivity extends AppCompatActivity {
         listView.setAdapter(taskListAdapter);
     }
 
+    public void addTaskStart(View listItem){
+
+        Intent intent = new Intent(this, AddTaskActivity.class);
+
+        startActivity(intent);
+
+    }
 
     public void getTask(View listItem){
         Task task = (Task) listItem.getTag();

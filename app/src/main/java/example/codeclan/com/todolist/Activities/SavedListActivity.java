@@ -18,7 +18,7 @@ import example.codeclan.com.todolist.Models.Task;
 import example.codeclan.com.todolist.R;
 
 public class SavedListActivity extends AppCompatActivity {
-
+//todo - remove this activity once shared prefs working
     TextView savedTasks;
 
     @Override

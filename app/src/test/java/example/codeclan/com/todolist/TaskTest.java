@@ -20,7 +20,7 @@ public class TaskTest {
 
     public void before(){
 
-        task = new Task("Food Shop", "Milk, Bread, Eggs", true, RagStatus.RED);
+        task = new Task("Food Shop", "Milk, Bread, Eggs", true);
 
     }
 
@@ -43,11 +43,11 @@ public class TaskTest {
         assertEquals(true, task.isPriority() );
     }
 
-    @Test
-
-    public void canGetRagStatus(){
-        assertEquals(RagStatus.RED, task.getRagStatus() );
-    }
+//    @Test
+//
+//    public void canGetRagStatus(){
+//        assertEquals(RagStatus.RED, task.getRagStatus() );
+//    }
 
     @Test
 

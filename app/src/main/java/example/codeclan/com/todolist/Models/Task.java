@@ -18,11 +18,14 @@ public class Task implements Serializable {
     private RagStatus ragStatus;
 
 
-    public Task(String name, String description, Boolean priority, RagStatus ragStatus){
+    public Task(String name, String description, Boolean priority){
+
+//    todo - temporarily taken out ragstatus until decide to use ?
+// public Task(String name, String description, Boolean priority, RagStatus ragStatus){
         this.name = name;
         this.description = description;
         this.priority = priority;
-        this.ragStatus = ragStatus;
+//        this.ragStatus = ragStatus;
         this.complete = false;
         this.archived = false;
     }
@@ -36,9 +39,9 @@ public class Task implements Serializable {
         return this.description;
     }
 
-    public RagStatus getRagStatus() {
-        return this.ragStatus;
-    }
+//    public RagStatus getRagStatus() {
+//        return this.ragStatus;
+//    }
 
     public boolean isPriority() {
         return this.priority;
@@ -65,9 +68,9 @@ public class Task implements Serializable {
         this.priority = priority;
     }
 
-    public void setRagStatus(RagStatus ragStatus) {
-        this.ragStatus = ragStatus;
-    }
+//    public void setRagStatus(RagStatus ragStatus) {
+//        this.ragStatus = ragStatus;
+//    }
 
     public void setComplete(boolean complete) {
         this.complete = complete;
