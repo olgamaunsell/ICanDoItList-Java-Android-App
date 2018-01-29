@@ -24,11 +24,6 @@ public class AddTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task_activity);
-
-
-
-
-
     }
 
     public void onAddTask(View view) {
@@ -58,14 +53,10 @@ public class AddTaskActivity extends AppCompatActivity {
 //        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> currentTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
-//        Intent intent = getIntent();
-//        Task selectedTask = (Task) intent.getSerializableExtra("task");
-
         currentTasks.add(newTask);
 
 //        LINES BELOW ARE RESPONSIBLE FOR SAVING THE DATA TO THE JSON STRING
         SharedPreferences.Editor editor = sharedPref.edit();
-
 
         editor.putString("AllTasks", gson.toJson(currentTasks));
         editor.apply();

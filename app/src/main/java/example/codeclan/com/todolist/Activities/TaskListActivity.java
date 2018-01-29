@@ -73,20 +73,19 @@ public class TaskListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addTaskStart(View listItem){
+    public void addTaskStart(View view){
         addTask();
 
     }
 
     public void getTask(View listItem){
-        Task task = (Task) listItem.getTag();
-        Log.d(getClass().toString(), task.getName() + " is selected");
+        Task editTask = (Task) listItem.getTag();
+        Log.d(getClass().toString(), editTask.getName() + " is selected");
 
 
-//        Intent intent = new Intent(this, MaintainTaskActivity.class);
-        Intent intent = new Intent(this, SavedListActivity.class);
+        Intent intent = new Intent(this, EditTaskActivity.class);
 
-        intent.putExtra("task", task);
+        intent.putExtra("edit_task", editTask);
 
         startActivity(intent);
 

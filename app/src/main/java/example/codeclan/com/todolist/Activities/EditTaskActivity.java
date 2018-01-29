@@ -11,7 +11,14 @@ public class EditTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_task_activity);
+
     }
 
+
+
+//    new methods required:
+//    todo onSaveTask
+//    todo onDeleteTask
+//    todo onArchiveTask
 
 }

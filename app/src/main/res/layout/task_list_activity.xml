@@ -6,28 +6,35 @@
     android:layout_height="match_parent"
     tools:context="example.codeclan.com.todolist.Activities.TaskListActivity">
 
-    <ListView
-        android:id="@+id/task_list_view"
-        android:layout_width="0dp"
-        android:layout_height="401dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButton2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginStart="718dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:onClick="addTaskStart"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add" />
 
+    <ListView
+        android:id="@+id/task_list_view"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
+
+

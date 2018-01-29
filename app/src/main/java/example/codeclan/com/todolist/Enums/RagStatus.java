@@ -6,6 +6,7 @@ package example.codeclan.com.todolist.Enums;
 
 public enum RagStatus {
     RED,
-    AMBER,
+    ORANGE,
+    YELLOW,
     GREEN
 }
