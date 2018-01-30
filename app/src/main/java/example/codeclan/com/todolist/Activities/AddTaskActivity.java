@@ -1,6 +1,7 @@
 package example.codeclan.com.todolist.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -63,7 +64,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
         Toast.makeText(this,newTask.getName() + " is added !",  Toast.LENGTH_LONG).show();
 
-        finish();
+// put a start activity here to go back to tasklistactivity
+        Intent refresh = new Intent(this, TaskListActivity.class);
+        startActivity(refresh);
     }
 
 }

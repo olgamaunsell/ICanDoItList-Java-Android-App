@@ -3,7 +3,6 @@ package example.codeclan.com.todolist;
 import org.junit.Before;
 import org.junit.Test;
 
-import example.codeclan.com.todolist.Enums.RagStatus;
 import example.codeclan.com.todolist.Models.Task;
 
 import static junit.framework.Assert.assertEquals;
@@ -63,12 +62,12 @@ public class TaskTest {
         assertEquals("Milk, Bread, Eggs, Beer", task.getDescription());
     }
 
-    @Test
-
-    public void canSetRagStatus(){
-        task.setRagStatus(RagStatus.AMBER);
-        assertEquals(RagStatus.AMBER, task.getRagStatus());
-    }
+//    @Test
+//
+//    public void canSetRagStatus(){
+//        task.setRagStatus(RagStatus.AMBER);
+//        assertEquals(RagStatus.AMBER, task.getRagStatus());
+//    }
 
     @Test
 
@@ -90,4 +89,6 @@ public class TaskTest {
         task.setArchived(true);
         assertEquals(true, task.isArchived());
     }
+
+
 }

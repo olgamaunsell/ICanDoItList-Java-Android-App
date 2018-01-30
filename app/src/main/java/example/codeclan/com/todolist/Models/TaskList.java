@@ -26,4 +26,15 @@ public class TaskList {
     public void removeTask(Task task) {
         taskList.remove(task);
     }
+
+    public int getIndex(Task task) {
+        return taskList.indexOf(task);
+    }
+
+//    public void updateTask(Task task){
+//
+//        int index = getIndex(Task task);
+//        taskList.set(index, task);
+//    }
+
 }

@@ -3,7 +3,6 @@ package example.codeclan.com.todolist;
 import org.junit.Before;
 import org.junit.Test;
 
-import example.codeclan.com.todolist.Enums.RagStatus;
 import example.codeclan.com.todolist.Models.Task;
 import example.codeclan.com.todolist.Models.TaskList;
 
@@ -23,8 +22,8 @@ public class TaskListTest {
 
     public void before(){
         taskList = new TaskList();
-        task1 = new Task("Food Shop", "Milk, Bread, Eggs", true, RagStatus.RED);
-        task2 = new Task("Holiday", "Destinations, check flights, check hotels", false, RagStatus.RED);
+        task1 = new Task("Food Shop", "Milk, Bread, Eggs", true);
+        task2 = new Task("Holiday", "Destinations, check flights, check hotels", false);
     }
 
     @Test
@@ -46,5 +45,15 @@ public class TaskListTest {
 
         taskList.removeTask(task1);
         assertEquals(getSizeBefore-1, taskList.getList().size());
+    }
+
+    @Test
+
+    public void canUpdateTask(){
+        taskList.addTask(task1);
+        task1.setDescription("Milk, Bread, Eggs, Beer");
+
+        assertEquals("Milk, Bread, Eggs, Beer", taskList.getList().get(taskList.getIndex(task1)).getDescription());
+
     }
 }

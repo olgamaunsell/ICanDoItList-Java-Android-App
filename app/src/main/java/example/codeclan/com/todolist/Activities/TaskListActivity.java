@@ -50,7 +50,9 @@ public class TaskListActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.task_list_view);
         listView.setAdapter(taskListAdapter);
 
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,13 +81,17 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     public void getTask(View listItem){
-        Task editTask = (Task) listItem.getTag();
-        Log.d(getClass().toString(), editTask.getName() + " is selected");
+
+        int taskIndex  = (int) listItem.getTag();
+
+        Log.d(getClass().toString(), "Task Index" + taskIndex + " is selected");
+//
+//        Log.d(getClass().toString(), editTask.getName() + " is selected");
 
 
         Intent intent = new Intent(this, EditTaskActivity.class);
 
-        intent.putExtra("edit_task", editTask);
+        intent.putExtra("task_index", taskIndex);
 
         startActivity(intent);
 

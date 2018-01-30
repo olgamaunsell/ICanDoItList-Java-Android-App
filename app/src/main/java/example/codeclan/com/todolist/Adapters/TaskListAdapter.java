@@ -21,6 +21,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
 
     public TaskListAdapter(Context context, ArrayList<Task> taskList) {
         super(context, 0, taskList);
+
     }
 
     @Override
@@ -41,7 +42,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         TextView name = listItemView.findViewById(R.id.name);
         name.setText(currentTask.getName());
 
-        listItemView.setTag(currentTask);
+        listItemView.setTag(position);
         return listItemView;
 
     }
