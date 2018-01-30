@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">To Do List</string>
+    <string name="app_name">ICanDoItList</string>
     <string name="preference_file_key">SAVED TASKS</string>
     <string name="add_task">Add Task</string>
     <string name="priority_entry">Tick if priority task</string>
