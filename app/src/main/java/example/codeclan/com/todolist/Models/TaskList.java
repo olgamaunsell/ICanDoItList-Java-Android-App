@@ -12,9 +12,6 @@ public class TaskList {
 
     public TaskList() {
         taskList = new ArrayList<Task>();
-//  todo    will remove 2 lines below later, just to view screen with populated tasks
-        taskList.add(new Task("Food Shop", "Milk, Bread, Eggs", true));
-        taskList.add(new Task("Holiday", "Destinations, check flights, check hotels", false));
     }
 
     public ArrayList<Task> getList() {
