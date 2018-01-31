@@ -14,6 +14,11 @@ public class TaskList {
         taskList = new ArrayList<Task>();
     }
 
+    public TaskList(ArrayList<Task> preExistingList) {
+        taskList = preExistingList;
+    }
+
+
     public ArrayList<Task> getList() {
         return new ArrayList<Task>(taskList);
     }

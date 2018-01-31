@@ -11,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,11 +19,11 @@ import java.util.ArrayList;
 
 import example.codeclan.com.todolist.Adapters.TaskListAdapter;
 import example.codeclan.com.todolist.Models.Task;
+import example.codeclan.com.todolist.Models.TaskList;
 import example.codeclan.com.todolist.R;
 
 public class TaskListActivity extends AppCompatActivity {
 
-    TextView newTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,8 @@ public class TaskListActivity extends AppCompatActivity {
 //        JSON STRING
 
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
+
+//
         Log.d("All tasks", currentlySavedTasks);
 
 //        gson setup
@@ -43,13 +44,14 @@ public class TaskListActivity extends AppCompatActivity {
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
 
 //        USING the JSON string to put into GSON ARRAYLIST
-        ArrayList<Task> tasksToShow = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
+        ArrayList<Task> gsonTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
-        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow);
+        TaskList tasksToShow = new TaskList(gsonTasks);
+
+        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
 
         ListView listView = findViewById(R.id.task_list_view);
         listView.setAdapter(taskListAdapter);
-
 
     }
 
