@@ -69,7 +69,7 @@ public class TaskListTest {
         taskList.getList().get(taskList.getTaskIndex(task2)).setComplete(true);
         taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
 
-//        TaskList outstandingTasks = new TaskList();
+
         TaskList outstandingTasks = taskList.outstandingTasks();
 //        assertEquals("Holiday", outstandingTasks.getList().get(outstandingTasks.getTaskIndex(task2)).getName());
         assertEquals(1, outstandingTasks.getList().size() );

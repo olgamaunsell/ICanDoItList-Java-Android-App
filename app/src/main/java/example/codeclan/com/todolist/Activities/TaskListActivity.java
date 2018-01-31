@@ -46,12 +46,16 @@ public class TaskListActivity extends AppCompatActivity {
 //        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> gsonTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
-        TaskList tasksToShow = new TaskList(gsonTasks);
+        TaskList allTasks = new TaskList(gsonTasks);
+
+//        Default display will be outstanding Tasks only
+
 
 //        todo - use TaskList methods to filter/sort tasks
 
+        TaskList outstandingTasks = allTasks.outstandingTasks();
 
-        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
+        TaskListAdapter taskListAdapter = new TaskListAdapter(this, outstandingTasks.getList());
 
         ListView listView = findViewById(R.id.task_list_view);
         listView.setAdapter(taskListAdapter);
