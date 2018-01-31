@@ -66,13 +66,11 @@ public class TaskListTest {
         taskList.addTask(task1);
         taskList.addTask(task2);
         taskList.addTask(task3);
-        taskList.getList().get(taskList.getTaskIndex(task2)).setComplete(true);
+
         taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
 
-
         TaskList outstandingTasks = taskList.outstandingTasks();
-        assertEquals(1, outstandingTasks.getList().size() );
-
+        assertEquals(2, outstandingTasks.getList().size() );
 
     }
 
@@ -86,6 +84,36 @@ public class TaskListTest {
         TaskList priorityTasks = taskList.priorityTasks();
         assertEquals(2, priorityTasks.getList().size() );
 
+    }
+
+    @Test
+
+    public void canGetCompletedTasks(){
+        taskList.addTask(task1);
+        taskList.addTask(task2);
+        taskList.addTask(task3);
+
+        taskList.getList().get(taskList.getTaskIndex(task1)).setComplete(true);
+        taskList.getList().get(taskList.getTaskIndex(task2)).setComplete(true);
+
+        TaskList completedTasks = taskList.completedTasks();
+        assertEquals(2, completedTasks.getList().size() );
+
+    }
+
+    @Test
+
+    public void canGetArchivedTasks(){
+        taskList.addTask(task1);
+        taskList.addTask(task2);
+        taskList.addTask(task3);
+
+        taskList.getList().get(taskList.getTaskIndex(task1)).setComplete(true);
+        taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
+        taskList.getList().get(taskList.getTaskIndex(task3)).setArchived(true);
+
+        TaskList archivedTasks = taskList.archivedTasks();
+        assertEquals(1, archivedTasks.getList().size() );
 
     }
 }

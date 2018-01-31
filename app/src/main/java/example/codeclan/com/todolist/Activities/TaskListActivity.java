@@ -30,7 +30,7 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_list_activity);
 
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 //        JSON STRING
 
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
@@ -41,21 +41,36 @@ public class TaskListActivity extends AppCompatActivity {
 //        gson setup
 
         Gson gson = new Gson();
-        TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
+        TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>() {
+        };
 
 //        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> gsonTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
-        TaskList allTasks = new TaskList(gsonTasks);
+        TaskList tasksToShow = new TaskList(gsonTasks);
 
 //        Default display will be outstanding Tasks only
 
+        // todo check code below - use TaskList methods to filter/sort tasks ***
+//    todo ***    how to check if called from priorityTasks - check if Intent exists ? context ?
 
-//        todo - use TaskList methods to filter/sort tasks
+//
+//        TaskList tasksToShow;
+        Intent intent = getIntent();
 
-        TaskList outstandingTasks = allTasks.outstandingTasks();
+        if (intent.getExtras() != null) {
 
-        TaskListAdapter taskListAdapter = new TaskListAdapter(this, outstandingTasks.getList());
+            Bundle extras = intent.getExtras();
+            String filter = extras.getString("filter");
+
+            if (filter.equals("priority")) {
+                tasksToShow = tasksToShow.priorityTasks();
+            } else {
+                tasksToShow = tasksToShow.outstandingTasks();
+            }
+         }
+// todo check code above *******
+        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
 
         ListView listView = findViewById(R.id.task_list_view);
         listView.setAdapter(taskListAdapter);
@@ -76,7 +91,19 @@ public class TaskListActivity extends AppCompatActivity {
             addTask();
             return true;
         }
+
+        if (item.getItemId() == R.id.priority_tasks) {
+            priorityTasks();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void priorityTasks() {
+
+        Intent intent = new Intent(this, TaskListActivity.class);
+        intent.putExtra("filter", "priority");
+        startActivity(intent);
     }
 
     public void addTask(){

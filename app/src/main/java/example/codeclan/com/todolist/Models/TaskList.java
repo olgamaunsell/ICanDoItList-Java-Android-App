@@ -36,6 +36,18 @@ public class TaskList {
         return taskList.indexOf(task);
     }
 
+//    public TaskList filterTasks(Method method){
+//
+//        TaskList filteredTasks = new TaskList();
+//
+//        for (Task task: this.taskList) {
+//            if(!task.method)
+//                filteredTasks.addTask(task);
+//        }
+//        return filteredTasks;
+//    }
+
+
     public TaskList outstandingTasks() {
         TaskList outstandingTasks = new TaskList();
 
@@ -47,6 +59,7 @@ public class TaskList {
         }
 
     public TaskList priorityTasks() {
+
         TaskList priorityTasks = new TaskList();
 
         for (Task task: this.taskList) {
@@ -56,6 +69,25 @@ public class TaskList {
         return priorityTasks;
     }
 
+    public TaskList completedTasks() {
+        TaskList completedTasks = new TaskList();
+
+        for (Task task: this.taskList) {
+            if(task.isComplete())
+                completedTasks.addTask(task);
+        }
+        return completedTasks;
+    }
+
+    public TaskList archivedTasks() {
+        TaskList archivedTasks = new TaskList();
+
+        for (Task task: this.taskList) {
+            if(task.isArchived())
+                archivedTasks().addTask(task);
+        }
+        return archivedTasks;
+    }
 }
 
 
