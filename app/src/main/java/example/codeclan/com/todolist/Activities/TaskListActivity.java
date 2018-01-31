@@ -48,6 +48,9 @@ public class TaskListActivity extends AppCompatActivity {
 
         TaskList tasksToShow = new TaskList(gsonTasks);
 
+//        todo - use TaskList methods to filter/sort tasks
+
+
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
 
         ListView listView = findViewById(R.id.task_list_view);
