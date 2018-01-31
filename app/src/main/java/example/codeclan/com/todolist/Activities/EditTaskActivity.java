@@ -34,7 +34,7 @@ public class EditTaskActivity extends AppCompatActivity {
         EditText edit_task_name = findViewById(R.id.edit_name);
         EditText edit_task_description = findViewById(R.id.edit_description);
         CheckBox edit_task_priority = findViewById(R.id.edit_priority);
-
+        CheckBox edit_task_complete = findViewById(R.id.edit_complete);
 
         int taskIndex = (int) intent.getSerializableExtra("task_index");
 
@@ -57,33 +57,29 @@ public class EditTaskActivity extends AppCompatActivity {
         edit_task_name.setText(currentTask.getName());
         edit_task_description.setText(currentTask.getDescription());
         edit_task_priority.setChecked(currentTask.isPriority());
+        edit_task_complete.setChecked(currentTask.isComplete());
+
 
     }
 
     public void onSaveTask(View view){
 
-//        String currentTaskNameString = currentTask.getName().toString();
-//        String editedTaskNameString = editedTask.getName().toString();
-//        Log.d("onSaveTaskBeforeEdit", currentTaskNameString );
-//        Log.d("onSaveTaskOnSve", editedTaskNameString );
-//
         EditText edit_task_name = findViewById(R.id.edit_name);
         EditText edit_task_description = findViewById(R.id.edit_description);
         CheckBox edit_task_priority = findViewById(R.id.edit_priority);
+        CheckBox edit_task_complete = findViewById(R.id.edit_complete);
 
         String taskName = edit_task_name.getText().toString();
         String description = edit_task_description.getText().toString();
         Boolean priority = edit_task_priority.isChecked();
+        Boolean complete = edit_task_complete.isChecked();
 
         Task taskToBeSaved = new Task(taskName, description, priority);
-
-//        currentTask.setName(edit_task_name.getText().toString());
-//        currentTask.setDescription(edit_task_description.toString());
-//        currentTask.setPriority(edit_task_priority.isChecked());
+        taskToBeSaved.setComplete(edit_task_complete.isChecked());
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
 ////        JSON STRING
-//
+
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
         Log.d("All tasks", currentlySavedTasks);
 
@@ -92,24 +88,21 @@ public class EditTaskActivity extends AppCompatActivity {
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
 
-//        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> currentTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
         Intent intent = getIntent();
         int taskIndex = (int) intent.getSerializableExtra("task_index");
 
-
         currentTasks.set(taskIndex, taskToBeSaved);
 
-
-//        LINES BELOW ARE RESPONSIBLE FOR SAVING THE DATA TO THE JSON STRING
         SharedPreferences.Editor editor = sharedPref.edit();
 
         editor.putString("AllTasks", gson.toJson(currentTasks));
         editor.apply();
 
         Toast.makeText(this,taskToBeSaved.getName() + " is updated !",  Toast.LENGTH_LONG).show();
-// put a start activity here to go back to tasklistactivity
+
+// Go back to task list
         Intent refresh = new Intent(this, TaskListActivity.class);
         startActivity(refresh);
 
@@ -118,32 +111,26 @@ public class EditTaskActivity extends AppCompatActivity {
     public void onDeleteTask(View view){
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
-////        JSON STRING
-//
+
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
         Log.d("All tasks", currentlySavedTasks);
-
-//        gson setup
 
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
 
-//        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> currentTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
         Intent intent = getIntent();
         int taskIndex = (int) intent.getSerializableExtra("task_index");
         currentTasks.remove(taskIndex);
 
-
-//        LINES BELOW ARE RESPONSIBLE FOR SAVING THE DATA TO THE JSON STRING
         SharedPreferences.Editor editor = sharedPref.edit();
 
         editor.putString("AllTasks", gson.toJson(currentTasks));
         editor.apply();
 
         Toast.makeText(this," Task deleted !",  Toast.LENGTH_LONG).show();
-// put a start activity here to go back to tasklistactivity
+
         Intent refresh = new Intent(this, TaskListActivity.class);
         startActivity(refresh);
 

@@ -12,11 +12,10 @@
         android:id="@+id/name"
         android:layout_width="232dp"
         android:layout_height="49dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/complete"
         app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="73dp"
         tools:text="Name" />
 
 
@@ -35,13 +34,4 @@
         tools:visibility="visible" />
 
 
-    <CheckBox
-        android:id="@+id/complete"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onComplete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

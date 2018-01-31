@@ -7,14 +7,15 @@
 
     <EditText
         android:id="@+id/edit_name"
-        android:layout_width="318dp"
+        android:layout_width="331dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,33 +29,54 @@
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
 
     <ImageView
         android:id="@+id/star_edit"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/archive_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toEndOf="@+id/edit_priority"
         app:layout_constraintTop_toBottomOf="@+id/edit_description"
+        app:layout_constraintVertical_bias="0.122"
         app:srcCompat="@android:drawable/star_big_on"
         tools:visibility="visible" />
 
     <CheckBox
         android:id="@+id/edit_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="116dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="233dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
         android:text="@string/priority_entry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toEndOf="@+id/star_edit"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_description" />
+
+    <CheckBox
+        android:id="@+id/edit_complete"
+        android:layout_width="287dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/complete_entry"
+        app:layout_constraintBottom_toTopOf="@+id/delete_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_priority"
+        app:layout_constraintVertical_bias="0.317" />
+
 
     <ImageButton
         android:id="@+id/save_button"
@@ -77,14 +99,11 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:onClick="onDeleteTask"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/archive_button"
         app:layout_constraintStart_toEndOf="@+id/save_button"
-        app:layout_constraintTop_toBottomOf="@+id/edit_priority"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/delete" />
 
     <ImageButton
@@ -98,6 +117,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/archive" />
+
 
 
 </android.support.constraint.ConstraintLayout>

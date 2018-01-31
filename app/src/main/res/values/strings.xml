@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ICanDoItList</string>
-    <string name="preference_file_key">SAVED TASKS</string>
+    <string name="preference_file_key">Saved Tasks</string>
+    <string name="task_preference_key">My Tasks</string>
     <string name="add_task">Add Task</string>
     <string name="priority_entry">Tick if priority task</string>
+    <string name="complete_entry">Tick if task complete</string>
 </resources>
