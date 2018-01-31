@@ -11,11 +11,11 @@ public class TaskList {
     private ArrayList<Task> taskList;
 
     public TaskList() {
-        taskList = new ArrayList<Task>();
+        this.taskList = new ArrayList<Task>();
     }
 
     public TaskList(ArrayList<Task> preExistingList) {
-        taskList = preExistingList;
+        this.taskList = preExistingList;
     }
 
 
@@ -32,9 +32,22 @@ public class TaskList {
         taskList.remove(task);
     }
 
-    public int getIndex(Task task) {
+    public int getTaskIndex(Task task) {
         return taskList.indexOf(task);
     }
+
+    public TaskList outstandingTasks() {
+        TaskList outstandingTasks = new TaskList();
+
+        for (Task task: this.taskList) {
+            if(!task.isComplete())
+                outstandingTasks.addTask(task);
+            }
+        return outstandingTasks;
+        }
+
+    }
+
 
 //    public void updateTask(Task task){
 //
@@ -42,4 +55,4 @@ public class TaskList {
 //        taskList.set(index, task);
 //    }
 
-}
+
