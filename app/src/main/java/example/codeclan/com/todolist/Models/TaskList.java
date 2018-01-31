@@ -46,7 +46,17 @@ public class TaskList {
         return outstandingTasks;
         }
 
+    public TaskList priorityTasks() {
+        TaskList priorityTasks = new TaskList();
+
+        for (Task task: this.taskList) {
+            if(task.isPriority())
+                priorityTasks.addTask(task);
+        }
+        return priorityTasks;
     }
+
+}
 
 
 //    public void updateTask(Task task){

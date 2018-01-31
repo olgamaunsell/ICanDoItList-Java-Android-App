@@ -71,8 +71,20 @@ public class TaskListTest {
 
 
         TaskList outstandingTasks = taskList.outstandingTasks();
-//        assertEquals("Holiday", outstandingTasks.getList().get(outstandingTasks.getTaskIndex(task2)).getName());
         assertEquals(1, outstandingTasks.getList().size() );
+
+
+    }
+
+    @Test
+
+    public void canGetPriorityTasks(){
+        taskList.addTask(task1);
+        taskList.addTask(task2);
+        taskList.addTask(task3);
+
+        TaskList priorityTasks = taskList.priorityTasks();
+        assertEquals(2, priorityTasks.getList().size() );
 
 
     }
