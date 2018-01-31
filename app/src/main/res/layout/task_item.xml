@@ -18,7 +18,7 @@
         app:layout_constraintStart_toEndOf="@+id/complete"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Name" />
-        <!--android:onClick="getTask"/>-->
+
 
     <ImageView
         android:id="@+id/priority"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/star_big_on"
         tools:visibility="visible" />
-        <!--android:onClick="getTask"/>-->
+
 
     <CheckBox
         android:id="@+id/complete"

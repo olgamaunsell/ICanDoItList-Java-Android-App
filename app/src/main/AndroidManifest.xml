@@ -16,8 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SavedListActivity"
-            android:parentActivityName=".Activities.TaskListActivity"></activity>
         <activity android:name=".Activities.AddTaskActivity"
             android:parentActivityName=".Activities.TaskListActivity"></activity>
         <activity android:name=".Activities.EditTaskActivity"
