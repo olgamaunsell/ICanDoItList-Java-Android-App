@@ -49,26 +49,43 @@ public class TaskListActivity extends AppCompatActivity {
 
         TaskList tasksToShow = new TaskList(gsonTasks);
 
-//        Default display will be outstanding Tasks only
-
         // todo check code below - use TaskList methods to filter/sort tasks ***
 //    todo ***    how to check if called from priorityTasks - check if Intent exists ? context ?
 
+
 //
-//        TaskList tasksToShow;
         Intent intent = getIntent();
-
+//
         if (intent.getExtras() != null) {
-
+//
             Bundle extras = intent.getExtras();
             String filter = extras.getString("filter");
+//
+            switch (filter) {
+                case "priority":
+                    tasksToShow = tasksToShow.outstandingPriorityTasks();
+                    break;
+                case "outstanding":
+                    tasksToShow = tasksToShow.outstandingTasks();
+                    break;
+                case "completed":
+                    tasksToShow = tasksToShow.completedTasks();
+                    break;
+                case "all":
+                    break;
 
-            if (filter.equals("priority")) {
-                tasksToShow = tasksToShow.priorityTasks();
-            } else {
-                tasksToShow = tasksToShow.outstandingTasks();
+//                    tasksToShow = tasksToShow.getList();
+
+
             }
-         }
+
+            }else {
+                tasksToShow = tasksToShow.outstandingTasks();
+             }
+
+
+
+
 // todo check code above *******
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
 
@@ -92,17 +109,51 @@ public class TaskListActivity extends AppCompatActivity {
             return true;
         }
 
+        if (item.getItemId() == R.id.completed_tasks) {
+            completedTasks();
+            return true;
+        }
+
+
         if (item.getItemId() == R.id.priority_tasks) {
             priorityTasks();
             return true;
         }
+
+        if (item.getItemId() == R.id.outstanding_tasks) {
+            outstandingTasks();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.all_tasks) {
+            allTasks();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
-    private void priorityTasks() {
+    private void completedTasks() {
+        Intent intent = new Intent(this, TaskListActivity.class);
+        intent.putExtra("filter", "completed");
+        startActivity(intent);
+    }
 
+    private void priorityTasks() {
         Intent intent = new Intent(this, TaskListActivity.class);
         intent.putExtra("filter", "priority");
+        startActivity(intent);
+    }
+
+    private void outstandingTasks() {
+        Intent intent = new Intent(this, TaskListActivity.class);
+        intent.putExtra("filter", "outstanding");
+        startActivity(intent);
+    }
+
+    private void allTasks() {
+        Intent intent = new Intent(this, TaskListActivity.class);
+        intent.putExtra("filter", "all");
         startActivity(intent);
     }
 

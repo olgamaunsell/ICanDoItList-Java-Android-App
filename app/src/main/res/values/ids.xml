@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="completed_tasks" type="id">Completed Tasks</item>
+</resources>

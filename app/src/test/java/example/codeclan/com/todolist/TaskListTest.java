@@ -23,9 +23,10 @@ public class TaskListTest {
 
     public void before(){
         taskList = new TaskList();
-        task1 = new Task("Food Shop", "Milk, Bread, Eggs", true);
-        task2 = new Task("Holiday", "Destinations, check flights, check hotels", false);
+
+        task1 = new Task("Holiday", "Destinations, check flights, check hotels", false);
         task3 = new Task("Project", "Planning, code, test", true);
+        task3 = new Task("Food Shop", "Milk, Bread, Eggs", true);
     }
 
     @Test
@@ -76,13 +77,14 @@ public class TaskListTest {
 
     @Test
 
-    public void canGetPriorityTasks(){
+    public void canGetOutstandingPriorityTasks(){
         taskList.addTask(task1);
         taskList.addTask(task2);
         taskList.addTask(task3);
+        taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
 
-        TaskList priorityTasks = taskList.priorityTasks();
-        assertEquals(2, priorityTasks.getList().size() );
+        TaskList priorityTasks = taskList.outstandingPriorityTasks();
+        assertEquals(1, priorityTasks.getList().size() );
 
     }
 
@@ -103,17 +105,29 @@ public class TaskListTest {
 
     @Test
 
-    public void canGetArchivedTasks(){
+    public void canSortTasksByNameAsc(){
         taskList.addTask(task1);
         taskList.addTask(task2);
         taskList.addTask(task3);
 
-        taskList.getList().get(taskList.getTaskIndex(task1)).setComplete(true);
-        taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
-        taskList.getList().get(taskList.getTaskIndex(task3)).setArchived(true);
+        taskList.sortByTaskNameAsc();
 
-        TaskList archivedTasks = taskList.archivedTasks();
-        assertEquals(1, archivedTasks.getList().size() );
 
     }
+
+//    @Test
+//
+//    public void canGetArchivedTasks(){
+//        taskList.addTask(task1);
+//        taskList.addTask(task2);
+//        taskList.addTask(task3);
+//
+//        taskList.getList().get(taskList.getTaskIndex(task1)).setComplete(true);
+//        taskList.getList().get(taskList.getTaskIndex(task3)).setComplete(true);
+//        taskList.getList().get(taskList.getTaskIndex(task3)).setArchived(true);
+//
+//        TaskList archivedTasks = taskList.archivedTasks();
+//        assertEquals(1, archivedTasks.getList().size() );
+//
+//    }
 }

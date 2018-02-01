@@ -58,12 +58,12 @@ public class TaskList {
         return outstandingTasks;
         }
 
-    public TaskList priorityTasks() {
+    public TaskList outstandingPriorityTasks() {
 
         TaskList priorityTasks = new TaskList();
 
         for (Task task: this.taskList) {
-            if(task.isPriority())
+            if(task.isPriority() && !task.isComplete())
                 priorityTasks.addTask(task);
         }
         return priorityTasks;
@@ -79,15 +79,21 @@ public class TaskList {
         return completedTasks;
     }
 
-    public TaskList archivedTasks() {
-        TaskList archivedTasks = new TaskList();
+    public TaskList sortByTaskNameAsc() {
+        TaskList sortedTasks = new TaskList();
 
-        for (Task task: this.taskList) {
-            if(task.isArchived())
-                archivedTasks().addTask(task);
-        }
-        return archivedTasks;
+        return sortedTasks;
     }
+
+//    public TaskList archivedTasks() {
+//        TaskList archivedTasks = new TaskList();
+//
+//        for (Task task: this.taskList) {
+//            if(task.isArchived())
+//                archivedTasks().addTask(task);
+//        }
+//        return archivedTasks;
+//    }
 }
 
 
