@@ -24,6 +24,7 @@ import example.codeclan.com.todolist.R;
 
 public class TaskListActivity extends AppCompatActivity {
 
+    private TaskListAdapter taskListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +32,19 @@ public class TaskListActivity extends AppCompatActivity {
         setContentView(R.layout.task_list_activity);
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-//        JSON STRING
 
+        // JSON STRING
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
 
-//
         Log.d("All tasks", currentlySavedTasks);
 
-//        gson setup
+        //gson setup
 
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>() {
         };
 
-//        USING the JSON string to put into GSON ARRAYLIST
+        //USING the Json string to put into gson ARRAYLIST
         ArrayList<Task> gsonTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
         TaskList tasksToShow = new TaskList(gsonTasks);
@@ -74,10 +74,12 @@ public class TaskListActivity extends AppCompatActivity {
                 tasksToShow = tasksToShow.outstandingTasks();
             }
 
-        TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
+        taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
+
 
         ListView listView = findViewById(R.id.task_list_view);
         listView.setAdapter(taskListAdapter);
+//        taskListAdapter.notifyDataSetChanged();
 
     }
 
@@ -100,7 +102,6 @@ public class TaskListActivity extends AppCompatActivity {
             completedTasks();
             return true;
         }
-
 
         if (item.getItemId() == R.id.priority_tasks) {
             priorityTasks();
@@ -133,6 +134,7 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     private void outstandingTasks() {
+
         Intent intent = new Intent(this, TaskListActivity.class);
         intent.putExtra("filter", "outstanding");
         startActivity(intent);

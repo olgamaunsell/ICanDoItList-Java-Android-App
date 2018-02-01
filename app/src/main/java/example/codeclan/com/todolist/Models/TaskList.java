@@ -18,11 +18,9 @@ public class TaskList {
         this.taskList = preExistingList;
     }
 
-
     public ArrayList<Task> getList() {
         return new ArrayList<Task>(taskList);
     }
-
 
     public void addTask(Task task) {
         taskList.add(task);
@@ -35,18 +33,6 @@ public class TaskList {
     public int getTaskIndex(Task task) {
         return taskList.indexOf(task);
     }
-
-//    public TaskList filterTasks(Method method){
-//
-//        TaskList filteredTasks = new TaskList();
-//
-//        for (Task task: this.taskList) {
-//            if(!task.method)
-//                filteredTasks.addTask(task);
-//        }
-//        return filteredTasks;
-//    }
-
 
     public TaskList outstandingTasks() {
         TaskList outstandingTasks = new TaskList();
@@ -79,11 +65,11 @@ public class TaskList {
         return completedTasks;
     }
 
-    public TaskList sortByTaskNameAsc() {
-        TaskList sortedTasks = new TaskList();
-
-        return sortedTasks;
-    }
+//    public TaskList sortByTaskNameAsc() {
+//        TaskList sortedTasks = new TaskList();
+//
+//        return sortedTasks;
+//    }
 
 //    public TaskList archivedTasks() {
 //        TaskList archivedTasks = new TaskList();
