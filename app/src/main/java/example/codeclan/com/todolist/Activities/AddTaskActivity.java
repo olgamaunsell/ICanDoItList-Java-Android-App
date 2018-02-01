@@ -48,22 +48,17 @@ public class AddTaskActivity extends AppCompatActivity {
         Task newTask = new Task(taskName, description, priority);
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
-//        JSON STRING
 
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
         Log.d("All tasks", currentlySavedTasks);
 
-//        gson setup
-
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
 
-//        USING the JSON string to put into GSON ARRAYLIST
         ArrayList<Task> currentTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
         currentTasks.add(newTask);
 
-//        LINES BELOW ARE RESPONSIBLE FOR SAVING THE DATA TO THE JSON STRING
         SharedPreferences.Editor editor = sharedPref.edit();
 
         editor.putString("AllTasks", gson.toJson(currentTasks));
@@ -71,7 +66,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
         Toast.makeText(this,newTask.getName() + " is added !",  Toast.LENGTH_LONG).show();
 
-// put a start activity here to go back to tasklistactivity
+    //  Go back to TaskList
         Intent refresh = new Intent(this, TaskListActivity.class);
         startActivity(refresh);
     }

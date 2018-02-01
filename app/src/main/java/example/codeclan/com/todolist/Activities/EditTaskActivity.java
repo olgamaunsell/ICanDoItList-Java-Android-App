@@ -68,7 +68,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         String taskName = edit_task_name.getText().toString();
 
-//        Check name is not blank or empty
+
         if (taskName.isEmpty()) {
 
             Toast.makeText(this, "Task name must be entered", Toast.LENGTH_LONG).show();
@@ -77,17 +77,13 @@ public class EditTaskActivity extends AppCompatActivity {
         String description = edit_task_description.getText().toString();
         Boolean priority = edit_task_priority.isChecked();
 
-
         Task taskToBeSaved = new Task(taskName, description, priority);
         taskToBeSaved.setComplete(edit_task_complete.isChecked());
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
-////        JSON STRING
 
         String currentlySavedTasks = sharedPref.getString("AllTasks", new ArrayList<Task>().toString());
         Log.d("All tasks", currentlySavedTasks);
-
-//        gson setup
 
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayListToken = new TypeToken<ArrayList<Task>>(){};
@@ -106,7 +102,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         Toast.makeText(this,taskToBeSaved.getName() + " is updated !",  Toast.LENGTH_LONG).show();
 
-// Go back to task list
+        // Go back to task list
         Intent refresh = new Intent(this, TaskListActivity.class);
         startActivity(refresh);
 
@@ -141,10 +137,5 @@ public class EditTaskActivity extends AppCompatActivity {
 
 
     }
-
-
-//    new methods required:
-
-//    todo onArchiveTask
 
 }

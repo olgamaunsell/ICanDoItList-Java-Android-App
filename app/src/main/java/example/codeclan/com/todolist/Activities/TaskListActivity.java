@@ -49,18 +49,13 @@ public class TaskListActivity extends AppCompatActivity {
 
         TaskList tasksToShow = new TaskList(gsonTasks);
 
-        // todo check code below - use TaskList methods to filter/sort tasks ***
-//    todo ***    how to check if called from priorityTasks - check if Intent exists ? context ?
-
-
-//
         Intent intent = getIntent();
-//
+
         if (intent.getExtras() != null) {
-//
+
             Bundle extras = intent.getExtras();
             String filter = extras.getString("filter");
-//
+
             switch (filter) {
                 case "priority":
                     tasksToShow = tasksToShow.outstandingPriorityTasks();
@@ -73,20 +68,12 @@ public class TaskListActivity extends AppCompatActivity {
                     break;
                 case "all":
                     break;
-
-//                    tasksToShow = tasksToShow.getList();
-
-
+            }
+        }
+        else {
+                tasksToShow = tasksToShow.outstandingTasks();
             }
 
-            }else {
-                tasksToShow = tasksToShow.outstandingTasks();
-             }
-
-
-
-
-// todo check code above *******
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, tasksToShow.getList());
 
         ListView listView = findViewById(R.id.task_list_view);
