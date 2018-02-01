@@ -21,8 +21,6 @@ import example.codeclan.com.todolist.R;
 
 public class EditTaskActivity extends AppCompatActivity {
 
-//    private Task currentTask;
-//    private Task updatedTaskToSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,6 @@ public class EditTaskActivity extends AppCompatActivity {
         edit_task_priority.setChecked(currentTask.isPriority());
         edit_task_complete.setChecked(currentTask.isComplete());
 
-
     }
 
     public void onSaveTask(View view){
@@ -70,9 +67,16 @@ public class EditTaskActivity extends AppCompatActivity {
         CheckBox edit_task_complete = findViewById(R.id.edit_complete);
 
         String taskName = edit_task_name.getText().toString();
+
+//        Check name is not blank or empty
+        if (taskName.isEmpty()) {
+
+            Toast.makeText(this, "Task name must be entered", Toast.LENGTH_LONG).show();
+            return;
+        }
         String description = edit_task_description.getText().toString();
         Boolean priority = edit_task_priority.isChecked();
-        Boolean complete = edit_task_complete.isChecked();
+
 
         Task taskToBeSaved = new Task(taskName, description, priority);
         taskToBeSaved.setComplete(edit_task_complete.isChecked());
@@ -109,6 +113,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     public void onDeleteTask(View view){
+
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
 

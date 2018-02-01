@@ -33,12 +33,19 @@ public class AddTaskActivity extends AppCompatActivity {
         EditText add_task_description = findViewById(R.id.add_task_description);
         CheckBox add_task_priority = findViewById(R.id.add_task_priority);
 
-        Task newTask = new Task("", "", false);
 
-        newTask.setName(add_task_name.getText().toString());
-        newTask.setDescription(add_task_description.getText().toString());
-        newTask.setPriority(add_task_priority.isChecked());
+        String taskName = add_task_name.getText().toString();
 
+        if (taskName.isEmpty()) {
+
+            Toast.makeText(this, "Task name must be entered", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String description = add_task_description.getText().toString();
+        Boolean priority = add_task_priority.isChecked();
+
+        Task newTask = new Task(taskName, description, priority);
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE );
 //        JSON STRING

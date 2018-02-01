@@ -80,4 +80,13 @@ public class Task implements Serializable {
         this.archived = archived;
     }
 
+    public boolean isNameEmpty() {
+
+        if (this.name == null || this.name.trim().length() == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

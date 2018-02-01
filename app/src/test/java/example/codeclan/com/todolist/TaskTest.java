@@ -14,13 +14,16 @@ import static junit.framework.Assert.assertEquals;
 public class TaskTest {
 
     Task task;
+    Task emptyNameTask;
+    Task nullNameTask;
 
     @Before
 
     public void before(){
 
         task = new Task("Food Shop", "Milk, Bread, Eggs", true);
-
+        emptyNameTask = new Task(" ", "Milk, Bread, Eggs", true);
+        nullNameTask = new Task(null, "Milk, Bread, Eggs", true);
     }
 
     @Test
@@ -90,5 +93,12 @@ public class TaskTest {
         assertEquals(true, task.isArchived());
     }
 
+    @Test
+
+    public void isNameIsEmpty(){
+        assertEquals(false, task.isNameEmpty());
+        assertEquals(true, emptyNameTask.isNameEmpty());
+        assertEquals(true, nullNameTask.isNameEmpty());
+    }
 
 }
