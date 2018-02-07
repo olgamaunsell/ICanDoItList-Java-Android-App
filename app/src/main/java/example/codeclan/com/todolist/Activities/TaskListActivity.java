@@ -25,6 +25,7 @@ import example.codeclan.com.todolist.R;
 public class TaskListActivity extends AppCompatActivity {
 
     private TaskListAdapter taskListAdapter;
+    private TaskList tasksToShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,8 @@ public class TaskListActivity extends AppCompatActivity {
         //USING the Json string to put into gson ARRAYLIST
         ArrayList<Task> gsonTasks = gson.fromJson(currentlySavedTasks, taskArrayListToken.getType());
 
-        TaskList tasksToShow = new TaskList(gsonTasks);
+//        TaskList tasksToShow = new TaskList(gsonTasks);
+        tasksToShow = new TaskList(gsonTasks);
 
         Intent intent = getIntent();
 
@@ -130,7 +132,12 @@ public class TaskListActivity extends AppCompatActivity {
     private void priorityTasks() {
         Intent intent = new Intent(this, TaskListActivity.class);
         intent.putExtra("filter", "priority");
+
         startActivity(intent);
+//        tasksToShow = tasksToShow.outstandingPriorityTasks();
+//
+//        taskListAdapter.notifyDataSetChanged();
+
     }
 
     private void outstandingTasks() {
