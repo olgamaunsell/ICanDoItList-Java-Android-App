@@ -1,6 +1,5 @@
-# Java/Android Project Definition - Solo Project
 
-## To-Do List
+## ICanDoItList
 
 Goal: Practice what we learned in the Java / Android weeks and research how to persist data.
 
@@ -20,7 +19,7 @@ Users should also be able to mark tasks as completed.
 * I found that when filtering tasks that there were more limitations with using Shared Preferences when selecting a task to be entered. Therefore any additional changes/fixes would be catered better using a database instead.
 
 ### Future extensions
-* Update to use a database such as Room instead
+* Update to use a database instead of shared preferences
 * Allow user to mark task as complete from the main list screen
 * Sort task options (A-Z, Priority + A-Z)
 * Allow the user to enter a rag status when adding/editing a task to show task progress (RED, AMBER, GREEN).
